@@ -1,0 +1,24 @@
+{
+  "quotes": [
+    {
+      "quote": "“One, remember to look up at the stars and not down at your feet. Two, never give up work. Work gives you meaning and purpose and life is empty without it. Three, if you are lucky enough to find love, remember it is there and don't throw it away.”",
+      "author": "Stephen Hawking",
+      "id": 2
+    },
+    {
+      "quote": " \"Get busy living or get busy dying.\" ",
+      "author": "Stephen King",
+      "id": 3
+    },
+    {
+      "quote": "“That which does not kill us makes us stronger.”",
+      "author": "Friedrich Nietzsche",
+      "id": 5
+    },
+    {
+      "quote": "“And those who were seen dancing were thought to be insane by those who could not hear the music.”",
+      "author": "Friedrich Nietzsche",
+      "id": 6
+    }
+  ]
+}

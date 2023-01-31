@@ -1,0 +1,83 @@
+/*--------------------------------------QUOTES STYLE--------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+
+#quotes-container {
+    font-family: 'Jost', sans-serif;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+#date {
+    font-size: 10px;
+    margin-top: 15px;
+}
+
+#quote {
+    font-style: italic;
+}
+
+#author {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#table-container{
+    margin-top: 100px;
+}
+
+#title-style{
+    font-family: 'Bad Script', cursive;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
+
+/*--------------------------------------MEDIA QUERIES--------------------------------------*/
+
+@media screen and (max-width: 1200px) {
+    #quotes-container {
+        padding-top: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #quotes-container {
+        padding-top: 10px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+
+    #title-style{
+        display: none;
+    }
+
+    #quotes-container {
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #form-container {
+        display: none;
+    }
+
+    #btn-copy,
+    #btn-delete {
+        display: none;
+    }
+
+    #searchbar {
+        margin-top: -100px;
+    }
+
+    #table-container{
+        margin-top: 30px;
+    }
+}
+
+

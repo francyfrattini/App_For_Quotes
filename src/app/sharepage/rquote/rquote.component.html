@@ -1,0 +1,16 @@
+  <!----------------------------------------RANDOM QUOTE---------------------------------------->
+
+<!-- <div class="container" *ngIf="rquote">
+    <h1>
+        <p id="marks">"<i class="rquote">{{rquote.text}}</i> "</p>
+    </h1>
+    <div class="rauthor">- {{rquote.author}} </div>
+    <button type="button" class="btn btn-dark" id="nextQuote" (click)="getRQuote()">New Quote</button>    
+</div> -->
+
+<div *ngIf="rquote">
+    <i class="fa-solid fa-quote-left fa-3x"></i><h1>"{{rquote.text}}"</h1>
+    <p>- {{rquote.author}}</p>
+    <button type="button" class="btn btn-dark" id="nextQuote" (click)="getRQuote()">Skip Quote</button>
+    <button type="button" class="btn btn-dark" id="nextQuote" (click)="saveRQuote()">Save Quote</button>
+</div>

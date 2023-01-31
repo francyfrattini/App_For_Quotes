@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+}
+
+/* Bootstrap 5 */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
+/* Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Amiri&family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  height: 100%;
+  overflow-y: hidden;
+}
