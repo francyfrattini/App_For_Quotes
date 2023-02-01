@@ -1,27 +1,26 @@
 <!--
 - aggiungere favicon
-- aggiungere alert per apprivare delete, sale quote
 - rendere obbligatoria la quote e facoltativo l'autore
-- aggiungere date
-- ordinare dalla più nuova alla più vecchia
 - sistemare il filtro di ricerca in modo che si possano cercare più parole in una volta
+- save random quote
 -->
 
 <!----------------------------------------FORM---------------------------------------->
 
-<div *ngIf="quotes;else err" id="quotes-container" class="container mt-5">
+<div id="quotes-container" class="container mt-5">
 
-  <p id="title-style">Add a new quote</p>
+  <p class="liner" id="title-style"> Add a new quote</p>
 
-  <form #myForm="ngForm" id="form-container">
+  <form *ngIf="quoteModelObj" id="form-container" [formGroup]="formValue">
 
-    <input class="form-control" required type="text" placeholder="Quote" aria-label="default input example"
-      [(ngModel)]="quote" name="quote">
-    <input class="form-control form-control-sm mt-2" type="text" placeholder="Author"
-      aria-label=".form-control-sm example" [(ngModel)]="author" name="author">
+    <input required formControlName="text" class="form-control" type="text" placeholder="Quote" name="text"
+      [(ngModel)]="text">
+
+    <input formControlName="author" class="form-control form-control-sm mt-2" type="text" placeholder="Author"
+      name="author" [(ngModel)]="author">
 
     <div class="col-12 mt-2">
-      <button type="button" class="btn btn-dark" (click)="addQuotes(myForm.value)">Add Quote</button>
+      <button type="button" class="btn btn-dark" (click)="addQuote()">Add Quote</button>
     </div>
 
   </form>
@@ -29,7 +28,7 @@
   <!----------------------------------------SEARCHBAR---------------------------------------->
 
   <form class="lg mt-5">
-    <p id="title-style">Search a quote</p>
+    <p class="liner" id="title-style">Search a quote</p>
     <div class="input-group" id="searchbar">
       <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
       <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
@@ -40,41 +39,43 @@
   <!----------------------------------------TABLE FOR QUOTES---------------------------------------->
 
   <div class="container" id="table-container">
-    <p id="title-style">List of my quotes</p>
+    <p class="liner" id="title-style">List of my quotes</p>
     <table id="quotes-table" class="table">
       <thead>
         <tr>
-          <th (click)="sort(key)"><i class="fa-solid fa-sort"></i> Order By Date</th>
+          <th id="switch" (click)="sort(key)"><i class="fa-solid fa-sort"></i> Switch the order</th>
           <th></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let quote of quotes | filter:searchText | orderBy: key: reverse">
+        <tr *ngFor="let quote of quoteData | filter:searchText | orderBy: key: reverse">
           <td>
-            <p id="date">{{date | ddMmYYYYDate}}</p>
-            <!-- <p id="date">{{quote.date}}</p> -->
-            <p id="quote">{{quote.quote}}</p>
+            <p id="date">{{ quote.createdAt | date }}</p>
+            <p id="text">{{quote.text}}</p>
             <p id="author">- {{quote.author}}</p>
           </td>
 
           <!----------------------------------------COPY BUTTON---------------------------------------->
 
-          <!-- <td><button type="button" class="btn btn-dark">Update Quote</button></td> -->
-          <td><button id="btn-copy" type="button" class="btn btn-dark mt-5" cdkCopyToClipboard="{{quote.quote}}
+          <td>
+            <button id="btn-copy" type="button" class="btn btn-dark mt-5" cdkCopyToClipboard="{{quote.text}}
 (Author {{quote.author}})" (cdkCopyToClipboardCopied)="onClipboardCopy($event)"><i
                 class="fa-regular fa-copy"></i></button>
           </td>
+
+          <!----------------------------------------EDIT BUTTON---------------------------------------->
+
           <td>
+            <button id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              class="btn btn-dark mt-5"><i class="fa-solid fa-pen-to-square"></i></button>
+          </td>
 
-            <!----------------------------------------DELETE BUTTON---------------------------------------->
+          <!----------------------------------------DELETE BUTTON---------------------------------------->
 
-            <button id="btn-delete" type="button" class="btn btn-dark mt-5" (click)="deleteQuote(quote['id'])"><svg
-                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill"
-                viewBox="0 0 16 16">
-                <path
-                  d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-              </svg></button>
+          <td>
+            <button id="btn-delete" type="button" class="btn btn-dark mt-5" (click)="deleteQuote(quote)"><i
+                class="fa-solid fa-trash"></i></button>
           </td>
 
         </tr>
@@ -82,10 +83,32 @@
     </table>
   </div>
 
+  <!-- Modal -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit quote</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form *ngIf="quoteModelObj" id="form-container" [formGroup]="formValue">
+            <input required formControlName="text" class="form-control" type="text" placeholder="Quote" name="text"
+              [(ngModel)]="text">
+
+            <input formControlName="author" class="form-control form-control-sm mt-2" type="text" placeholder="Author"
+              name="author" [(ngModel)]="author">
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-<!----------------------------------------FETCH ERROR---------------------------------------->
-
-<ng-template #err>
-  <p class="text-danger">fetch error</p>
-</ng-template>

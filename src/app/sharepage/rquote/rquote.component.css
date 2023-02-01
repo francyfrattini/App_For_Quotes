@@ -5,6 +5,134 @@
 
 /*--------------------------------------STYLE AND ANIMATION--------------------------------------*/
 
+  div{
+	width: 50%;
+	padding: 20px;
+    margin-top: 250px;
+    margin-bottom: -150px;
+  }
+
+  .c-links {
+    position: relative;
+    text-align: center;
+    left: 45%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .btn--corners {
+    position: relative;
+    display: inline-block;
+    padding: 30px;
+    font-size: 18px;
+    text-align: center;
+    border: 2px solid #000000;
+  }
+
+  .btn--corners::before,
+  .btn--corners::after {
+    content: "";
+    position: absolute;
+    background-color: #ffffff;
+    z-index: 0;
+    transition: 200ms ease-in;
+    transform-origin: center center;
+  }
+
+  .c-links:target .btn--corners::before,
+  .c-links:target .btn--corners::after {
+    background-color: rgb(255, 255, 255);
+    transition-duration: 600ms;
+  }
+
+  .btn--corners::before {
+    width: calc(100% + 2px * 2 - 10px);
+    height: calc(100% + 2px * 2);
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .btn--corners::after {
+    height: calc(100% + 2px * 2 - 10px);
+    width: calc(100% + 2px * 2);
+    left: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .btn--corners:hover::before {
+    width: 0;
+  }
+
+  .btn--corners:hover::after {
+    height: 0;
+  }
+
+  .btn--corners h1 {
+    font-family: 'Bad Script', cursive;
+    position: relative;
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    line-height: 60px;
+    font-size: 40px;
+    z-index: 1;
+    text-shadow: rgb(189, 189, 189) 3px 0 4px;
+  }
+
+  .btn--corners p {
+    position: relative;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 18px;
+    z-index: 1;
+  }
+
+  button{
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-shadow: 0.1px 0.4px 0.5px rgb(56, 56, 56),
+    0.3px 1.3px 1.5px -0.8px rgb(56, 56, 56),
+    0.7px 3.2px 3.7px -1.7px rgb(56, 56, 56),
+    1.8px 7.7px 8.9px -2.5px rgb(56, 56, 56);
+}
+
+/*--------------------------------------MEDIA QUERIES--------------------------------------*/
+
+@media screen and (max-width: 900px) {
+  div{
+      width: 70%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+  div{
+      width: 100%;
+      margin-top: 140px;
+      margin-bottom: -80px;
+    }
+    .btn--corners {
+      padding: 15px;
+    }
+    .btn--corners h1 {
+      line-height: 30px;
+      font-size: 25px;
+    }
+    .btn--corners p {
+      font-size: 12px;
+    }
+    button{
+      font-size: 12px;
+      margin-top: -2px;
+  }
+}
+
+/*----------------------------------------RANDOME QUOTE PROVA----------------------------------------*/
+
+/*
 @keyframes bg {
 	0% {
 		background-size: 0 3px, 3px 0, 0 3px, 3px 0;
@@ -58,33 +186,7 @@ button{
 
 div:hover {
 	animation-play-state: running;
-}
-
-/*--------------------------------------MEDIA QUERIES--------------------------------------*/
-
-@media screen and (max-width: 1200px) {
-    div {
-        width: 70%;
-        margin-top: 100px;
-    }
-}
-
-
-@media screen and (max-width: 900px) {
-    i{
-        display: none;
-    }
-    button{
-        font-size: 12px;
-    }
-}
-
-@media screen and (max-width: 430px) {
-    div {
-        width: 90%;
-        margin-top: 60px;
-    }
-}
+} */
 
 /* .container {
     font-family: 'Jost', sans-serif;
@@ -122,3 +224,28 @@ div:hover {
     color: rgb(30, 30, 30);
     font-size: 20px;
 } */
+/*
+@media screen and (max-width: 1200px) {
+    div {
+        width: 70%;
+        margin-top: 100px;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    i{
+        display: none;
+    }
+    button{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    div {
+        width: 90%;
+        margin-top: 60px;
+    }
+} */
+

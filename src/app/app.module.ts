@@ -9,8 +9,6 @@ import { FooterComponent } from './sharepage/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { QuotesComponent } from './components/quotes/quotes.component';
-import { QuotesService } from './services/quotes.service';
-import { DdMmYYYYDatePipe } from './dd-mm-yyyy-date.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { RquoteComponent } from './sharepage/rquote/rquote.component';
@@ -22,7 +20,6 @@ import { OrderModule } from 'ngx-order-pipe';
     NavbarComponent,
     FooterComponent,
     QuotesComponent,
-    DdMmYYYYDatePipe,
     RquoteComponent,
   ],
 
@@ -39,7 +36,6 @@ import { OrderModule } from 'ngx-order-pipe';
     OrderModule,
   ],
 
-  providers: [QuotesService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

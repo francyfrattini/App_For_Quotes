@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 
+
 #quotes-container {
     font-family: 'Jost', sans-serif;
     padding-left: 200px;
@@ -14,8 +15,9 @@
     margin-top: 15px;
 }
 
-#quote {
+#text {
     font-style: italic;
+    margin-top: 15px;
 }
 
 #author {
@@ -23,15 +25,46 @@
     font-size: 15px;
 }
 
-#table-container{
+#table-container {
     margin-top: 100px;
 }
 
-#title-style{
+#title-style {
     font-family: 'Bad Script', cursive;
     text-align: center;
     font-size: 30px;
     color: rgb(0, 0, 0);
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
+
+button {
+    box-shadow: 0.1px 0.4px 0.5px rgb(56, 56, 56),
+        0.3px 1.3px 1.5px -0.8px rgb(56, 56, 56),
+        0.7px 3.2px 3.7px -1.7px rgb(56, 56, 56),
+        1.8px 7.7px 8.9px -2.5px rgb(56, 56, 56);
+}
+
+.liner {
+    display: flex;
+    align-items: center;
+    margin: 1em -1em;
+}
+
+.liner:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    margin: 0 1em;
+    background: linear-gradient(to right, white, rgb(131, 131, 131));
+}
+
+.liner:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    margin: 0 1em;
+    background: linear-gradient(to right, rgb(131, 131, 131), rgb(8, 8, 8));
 }
 
 /*--------------------------------------MEDIA QUERIES--------------------------------------*/
@@ -44,15 +77,9 @@
     }
 }
 
-@media screen and (max-width: 900px) {
-    #quotes-container {
-        padding-top: 10px;
-    }
-}
-
 @media screen and (max-width: 430px) {
 
-    #title-style{
+    #title-style {
         display: none;
     }
 
@@ -67,7 +94,8 @@
     }
 
     #btn-copy,
-    #btn-delete {
+    #btn-delete,
+    #btn-edit {
         display: none;
     }
 
@@ -75,9 +103,17 @@
         margin-top: -100px;
     }
 
-    #table-container{
+    #table-container {
         margin-top: 30px;
     }
+
+    #text,
+    #switch {
+        font-size: 12px;
+    }
+
+    #author{
+        font-size: 11px;
+    }
+
 }
-
-

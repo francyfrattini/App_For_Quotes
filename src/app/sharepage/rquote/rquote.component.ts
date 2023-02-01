@@ -42,7 +42,5 @@ export class RquoteComponent implements OnInit {
     }
   }
 
-  saveRQuote(){
-    
-  }
+  saveRQuote(){}
 }
