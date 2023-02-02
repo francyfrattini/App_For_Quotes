@@ -1,11 +1,9 @@
 
-import { Component, Input, OnInit, VERSION } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClipboardService } from 'ngx-clipboard';
-import { subscribeOn } from 'rxjs';
-import { ApiService } from 'src/app/services/api.service';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/quote.service';
 import Swal from 'sweetalert2';
-import { Quote } from './quote.model';
+import { Quote } from '../../classes/quote.model';
 
 @Component({
   selector: 'app-quotes',
@@ -21,9 +19,15 @@ export class QuotesComponent implements OnInit {
   author = "";
 
   quoteModelObj: Quote = new Quote();
-  quoteData:any;
+  quoteData = [];
 
-  searchText: any; //search
+  searchText = '';//search filter
+  filteredQuotes = this.quoteData;
+  filterQuotes() {
+    this.filteredQuotes = this.quoteData.filter(quote => quote['text'],includes(this.searchText));
+    this.filteredQuotes = this.quoteData.filter(quote => quote['author'],includes(this.searchText));
+  }
+
   clipboard: any; //copy clipboard
   orderId: String = ''; //order by id
 
@@ -40,6 +44,15 @@ export class QuotesComponent implements OnInit {
     }) 
 
     this.getAllQuotes();
+
+    this.filterQuotes();
+  }
+
+  //search filter
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['searchText']) {
+      this.filterQuotes();
+    }
   }
 
   //add a new quote
@@ -163,4 +176,8 @@ export class QuotesComponent implements OnInit {
     })
     
   }
+}
+
+function includes(searchText: string): any {
+  throw new Error('Function not implemented.');
 }

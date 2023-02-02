@@ -12,7 +12,7 @@
 
 <div class="container" *ngIf="rquote">
 <ul class="c-links" id="demo">
-  <li class="btn--corners">
+  <li class="btn--corners"><i class="fa-solid fa-quote-left fa-3x"></i><br>
     <h1>"{{rquote.text}}"</h1>
     <p>- {{rquote.author}}</p>
     <button type="button" class="btn btn-dark" id="nextQuote" (click)="getRQuote()">Skip Quote</button>
