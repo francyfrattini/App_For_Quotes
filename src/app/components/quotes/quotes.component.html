@@ -43,7 +43,7 @@
     <table id="quotes-table" class="table">
       <thead>
         <tr>
-          <th id="switch" (click)="sort(key)"><i class="fa-solid fa-sort"></i> Switch the order</th>
+          <th id="switch" (click)="sort(key)"><i class="fa-solid fa-sort"></i> Order by date</th>
           <th></th>
           <th></th>
         </tr>
@@ -66,10 +66,10 @@
 
           <!----------------------------------------EDIT BUTTON---------------------------------------->
 
-          <td>
+          <!-- <td>
             <button id="btn-edit" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-              class="btn btn-dark mt-5"><i class="fa-solid fa-pen-to-square"></i></button>
-          </td>
+              class="btn btn-dark mt-5"><i class="fa-solid fa-pen-to-square" (click)="onEdit(quote)"></i></button>
+          </td> -->
 
           <!----------------------------------------DELETE BUTTON---------------------------------------->
 
@@ -83,9 +83,9 @@
     </table>
   </div>
 
-  <!-- Modal -->
+  <!----------------------------------------MODAL---------------------------------------->
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -95,20 +95,19 @@
         <div class="modal-body">
 
           <form *ngIf="quoteModelObj" id="form-container" [formGroup]="formValue">
-            <input required formControlName="text" class="form-control" type="text" placeholder="Quote" name="text"
-              [(ngModel)]="text">
+            <input formControlName="text" class="form-control" type="text" placeholder="Quote" name="text">
 
             <input formControlName="author" class="form-control form-control-sm mt-2" type="text" placeholder="Author"
-              name="author" [(ngModel)]="author">
+              name="author">
 
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-dark">Save changes</button>
+          <button type="button" class="btn btn-dark" (click)="updateQuote()">Save changes</button>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </div>

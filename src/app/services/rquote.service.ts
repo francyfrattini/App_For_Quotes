@@ -14,8 +14,6 @@ export class RquoteService {
       return this.http.get<Rquote[]>('https://type.fit/api/quotes');
   }
 
-  saveRQuote(){
-
-  }
+  saveRQuote(){}
 
 }

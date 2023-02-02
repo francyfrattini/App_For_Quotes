@@ -2,6 +2,7 @@
 import { Component, Input, OnInit, VERSION } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClipboardService } from 'ngx-clipboard';
+import { subscribeOn } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import Swal from 'sweetalert2';
 import { Quote } from './quote.model';
@@ -108,6 +109,33 @@ export class QuotesComponent implements OnInit {
        })
      }
    });
+  }
+
+  //click edit button, show modal with quote's text and author
+  onEdit(quote:any){
+    this.quoteModelObj.id = quote.id;
+    this.formValue.controls['text'].setValue(quote.text)
+    this.formValue.controls['author'].setValue(quote.author)
+  }
+
+  //update quote
+  updateQuote(){
+    this.quoteModelObj.text = this.formValue.value.text;
+    this.quoteModelObj.author = this.formValue.value.author;
+    this.api.updateQuote(this.quoteModelObj, this.quoteModelObj.id)
+    .subscribe(res=>{
+      Swal.fire({ //alert quote update
+        position: 'center',
+        title: 'Your quote has been updated',
+        icon: "success",
+        background: "#000000",
+        color: "#FFFFFF",
+        showConfirmButton: false,
+        timer: 1200
+      })
+      this.formValue.reset();
+      this.getAllQuotes();
+    })
   }
 
   //order quote by id
