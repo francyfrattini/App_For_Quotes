@@ -2,7 +2,8 @@
 
 Applicazione per il salvataggio di citazioni realizzato con ```ANGULAR``` e ```BOOTSTRAP```.<br>
 Per il funzionamento del fake backend con `db.json`, runnare il comando `json-server --watch db.json`.
-Questo progetto è stato realizzato per una challenge divisa in diversi step, sottoposta dall'azienda SparkFabrik. <br>
+
+Questo progetto è stato realizzato per una challenge divisa in diversi step, sottoposta dall'azienda "SparkFabrik". <br>
 
 Le funzionalità dell'applicazione sono le seguenti:
 - SALVATAGGIO delle citazioni tramite form suddiviso in "testo della citazione" e "autore"
@@ -18,6 +19,8 @@ Implementazioni in corso:
 
 Application for saving quotations made with ```ANGULAR``` and ```BOOTSTRAP```.<br>
 For the operation of the fake backend with `db.json`, run `json-server --watch db.json`.
+
+This project was created for a challenge divided into several steps, submitted by the company "SparkFabrik".<br>
 
 The features of the application are as follows:
 - SAVING quotes by means of a form divided into "quote text" and "author"
