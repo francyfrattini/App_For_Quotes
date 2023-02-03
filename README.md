@@ -1,6 +1,6 @@
 # MyQuotes
 
-Applicazione per il salvataggio di citazioni realizzato con ```ANGULAR``` e ```BOOTSTRAP```.
+Applicazione per il salvataggio di citazioni realizzato con ```ANGULAR``` e ```BOOTSTRAP```.<br>
 Per il funzionamento del fake backend con `db.json`, runnare il comando `json-server --watch db.json`.
 Questo progetto è stato realizzato per una challenge divisa in diversi step, sottoposta dall'azienda SparkFabrik. <br>
 
@@ -16,7 +16,7 @@ Implementazioni in corso:
 
 ![preview](https://user-images.githubusercontent.com/107913694/216637523-6982d299-d9b9-4d73-9c9d-fcb3744b7373.png)
 
-Application for saving quotations made with ```ANGULAR``` and ```BOOTSTRAP```.
+Application for saving quotations made with ```ANGULAR``` and ```BOOTSTRAP```.<br>
 For the operation of the fake backend with `db.json`, run `json-server --watch db.json`.
 
 The features of the application are as follows:
