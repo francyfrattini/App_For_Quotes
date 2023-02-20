@@ -17,7 +17,7 @@ Implementazioni in corso:
 
 ![preview](https://user-images.githubusercontent.com/107913694/216637523-6982d299-d9b9-4d73-9c9d-fcb3744b7373.png)
 
-Application for saving quotations made with ```ANGULAR``` and ```BOOTSTRAP```.<br>
+Application for saving quotes made with ```ANGULAR``` and ```BOOTSTRAP```.<br>
 For the operation of the fake backend with `db.json`, run `json-server --watch db.json`.
 
 This project was created for a challenge divided into several steps, submitted by the company "SparkFabrik".<br>
